@@ -11,7 +11,7 @@ logger.start();
 
 const regex = /mul\((\d+),(\d+)\)|do\(\)|don't\(\)/g;
 let match;
-let sum = 0;
+let answer = 0;
 let enabled = true;
 
 while ((match = regex.exec(memory)) !== null) {
@@ -22,8 +22,8 @@ while ((match = regex.exec(memory)) !== null) {
     } else if (enabled && match[0].startsWith('mul(')) {
         const x = parseInt(match[1]);
         const y = parseInt(match[2]);
-        sum += x * y;
+        answer += x * y;
     }
 }
 
-logger.end(sum);
+logger.end(answer);
