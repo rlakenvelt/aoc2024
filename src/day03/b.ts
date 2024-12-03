@@ -19,7 +19,7 @@ while ((match = regex.exec(memory)) !== null) {
         enabled = true;
     } else if (match[0] === "don't()") {
         enabled = false;
-    } else if (enabled && match[0].startsWith('mul(')) {
+    } else if (enabled ) {
         const x = parseInt(match[1]);
         const y = parseInt(match[2]);
         answer += x * y;
