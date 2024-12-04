@@ -23,4 +23,12 @@ export class Direction {
             {x: 0, y: 1, symbol: 'S'}
         ]        
     }
+    static directionsDiagonals(): Direction[] {
+        return [
+            {x: 1, y: -1, symbol: 'NE'},
+            {x: -1, y: -1, symbol: 'NW'},
+            {x: -1, y: 1, symbol: 'SW'},
+            {x: 1, y: 1, symbol: 'SE'}
+        ]        
+    }    
 }
