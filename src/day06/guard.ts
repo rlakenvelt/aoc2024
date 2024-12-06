@@ -3,9 +3,14 @@ import { Direction } from '../utils/direction';
 
 export class Guard {
     position: Point = new Point(0, 0)
-    direction = { x: 0, y: -1, symbol: '^' }
+    direction = new Direction(0, -1, '^');
 
-    setDirection(direction: string) {
+    constructor(x: number = 0, y: number = 0, direction: string = '^') {
+        this.position = new Point(x, y);
+        this.setDirection(direction);
+    }
+
+    setDirection(direction: string = '^') {
         this.direction.symbol = direction;
         switch (direction) {
             case '^':

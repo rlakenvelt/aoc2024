@@ -1,7 +1,7 @@
 export class Direction {
     x: number = 0;
     y: number = 0;
-    symbol?: string = '';
+    symbol: string = '';
 
     constructor(x: number, y: number, symbol?: string) {
         this.x = x;

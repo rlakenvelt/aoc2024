@@ -2,6 +2,7 @@ import InputHelper from '../utils/input';
 import Logger from '../utils/logger';
 import { Grid } from '../utils/grid';
 import { Point } from '../utils/point';
+import { Direction } from '../utils/direction';
 import { Guard } from './guard';
 
 const puzzle = 'Day 06B: Guard Gallivant'
@@ -47,16 +48,15 @@ function guardLoopsWithMap(trymap: Grid<string>): boolean {
     }
     return false;
 }
-function findGuard(inmap: Grid<string>): Guard {
-    let guard = new Guard();
-    for (let x = 0; x < inmap.width; x++) {
-        for (let y = 0; y < inmap.height; y++) {
-            if (inmap.node(x, y) === '^' || inmap.node(x, y) === 'v' || inmap.node(x, y) === '<' || inmap.node(x, y) === '>') {
-                guard.position = new Point(x, y);
-                guard.setDirection(inmap.node(x, y) || '^');
+
+function findGuard(map: Grid<string>): Guard {
+    for (let x = 0; x < map.width; x++) {
+        for (let y = 0; y < map.height; y++) {
+            if (map.node(x, y) === '^' || map.node(x, y) === 'v' || map.node(x, y) === '<' || map.node(x, y) === '>') {
+                return new Guard(x, y, map.node(x, y));
             }
         }
     }
-    return guard;
+    return new Guard();
 }
 

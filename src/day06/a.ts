@@ -35,15 +35,13 @@ let answer = visited.length;
 logger.end(answer);
 
 function findGuard(map: Grid<string>): Guard {
-    let guard = new Guard();
     for (let x = 0; x < map.width; x++) {
         for (let y = 0; y < map.height; y++) {
             if (map.node(x, y) === '^' || map.node(x, y) === 'v' || map.node(x, y) === '<' || map.node(x, y) === '>') {
-                guard.position = new Point(x, y);
-                guard.setDirection(map.node(x, y) || '^');
+                return new Guard(x, y, map.node(x, y));
             }
         }
     }
-    return guard;
+    return new Guard();
 }
 
