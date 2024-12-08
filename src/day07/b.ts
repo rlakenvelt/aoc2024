@@ -6,12 +6,21 @@ const input = new InputHelper();
 const logger = new Logger(puzzle);
 
 const inputValues = input.getInput();
+let maxValues = 0;
 const equations = inputValues.map((line: string) => {
     const parts = line.split(':');
-    return {testvalue: parseInt(parts[0]), values: parts[1].trim().split(' ').map((value: string) => parseInt(value))};
+    const equation = {testvalue: parseInt(parts[0]), values: parts[1].trim().split(' ').map((value: string) => parseInt(value))};
+    maxValues = Math.max(maxValues, equation.values.length);
+    return equation;
 });
 
 logger.start();
+
+
+let allOperatorCombinations: any[] = [];
+for (let i = 1; i < maxValues; i++) {
+    allOperatorCombinations.push(generateOperatorCombinations(i));
+}
 
 let answer = equations.reduce((acc: number, equation: any) => {
     return acc + equantionSolver(equation);
@@ -20,10 +29,9 @@ let answer = equations.reduce((acc: number, equation: any) => {
 logger.end(answer);
 
 function equantionSolver(equation: any): number {
-    const operatorCombinations = generateOperatorCombinations(equation.values.length - 1);
-    for (let i = 0; i < operatorCombinations.length; i++) {
+    for (let i = 0; i < allOperatorCombinations[equation.values.length-2].length; i++) {
         let result = equation.values[0];
-        operatorCombinations[i].forEach((operator: string, index: number) => {
+        allOperatorCombinations[equation.values.length-2][i].forEach((operator: string, index: number) => {
             if (operator === '||') {
                 const expression = `${result}${equation.values[index + 1]}`;
                 result = eval(expression);
