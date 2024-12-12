@@ -1,5 +1,5 @@
 import { Direction } from "./direction";
-
+import { Point } from "./point";
 
 export class Grid<T> {
     grid: T[][] = [][0];
@@ -82,19 +82,22 @@ export class Grid<T> {
         return true;
     }  
 
-    floodFill (x: number, y: number, color: T) {
-        const current = this.grid[y][x];       
-        if(current === color) return
-        const queue = [{x, y}]
+    floodFill (x: number, y: number, color: T): Point[] {
+        const current = this.grid[y][x]; 
+        const points = new Set<string>();
+        const queue = [new Point(x, y)];
         while (queue.length > 0) {
             const n = queue.pop();
             if (!n) break
             this.grid[n.y][n.x] = color
+            if (points.has(n.toString())) continue;
+            points.add(n.toString());
             Direction.directionsWithoutDiagonals().forEach(d=>{
-                if (this.isInsideGrid(n.x+d.x , n.y+d.y) && this.grid[n.y+d.y][n.x+d.x] !== color) {
-                    queue.push({x: n.x+d.x, y: n.y+d.y})
+                if (this.isInsideGrid(n.x+d.x , n.y+d.y) && this.grid[n.y+d.y][n.x+d.x] === current) {
+                    queue.push(new Point(n.x+d.x, n.y+d.y))
                 }
             })
         }
+        return Array.from(points).map(p=>new Point(parseInt(p.split(',')[0]), parseInt(p.split(',')[1])));
     };
 }
