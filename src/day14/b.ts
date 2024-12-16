@@ -51,8 +51,6 @@ robots.forEach(r => {
     map.grid[r.location.y][r.location.x] = "#";
 });
 
-map.display();
-
 logger.end(answer);
 
 function checkForChristmasTree(robots: Robot[]): boolean {

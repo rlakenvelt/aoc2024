@@ -42,7 +42,6 @@ for (let i = 1; i <= 100; i++) {
 const midX = Math.floor(map.width / 2);
 const midY = Math.floor(map.height / 2);
 const quadrant: number[] = [0,0,0,0];
-console.log('Mid', midX, midY);
 
 robots.forEach(r => {
     if (r.location.x < midX) {
@@ -60,8 +59,6 @@ robots.forEach(r => {
     }
     map.grid[r.location.y][r.location.x] = '#';
 })
-console.log('Quadrant', quadrant);
-map.display();
 
 let answer = quadrant.reduce(Common.multiply, 1);
 
