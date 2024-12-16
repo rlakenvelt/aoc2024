@@ -22,13 +22,10 @@ const map: Grid<string> = new Grid(input.testmode ? 11 : 101, input.testmode ? 7
 logger.start();
 
 for (let i = 1; i <= 100; i++) {
-    // console.log('Iteration', i);
     robots.forEach(r => {
-        // map.grid[r.location.y][r.location.x] = '#';
         r.location.x += r.velocity.x;
         r.location.y += r.velocity.y;
         if (map.isOutsideGrid(r.location.x, r.location.y)) {
-            // console.log('Outside', r.location.x, r.location.y);
             if (r.location.x < 0) {
                 r.location.x = map.width + r.location.x;
             } else if (r.location.x > map.width - 1) {
@@ -39,9 +36,7 @@ for (let i = 1; i <= 100; i++) {
             } else if (r.location.y > map.height - 1) {
                 r.location.y = r.location.y - map.height;
             }
-            // console.log('Outside', r.location.x, r.location.y);
         }
-        // map.grid[r.location.y][r.location.x] = i.toString();
     });
 }
 const midX = Math.floor(map.width / 2);

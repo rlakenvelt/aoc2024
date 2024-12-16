@@ -24,7 +24,7 @@ logger.start();
 
 let answer = 0;
 
-for (let i = 1; i < 5; i++) {
+for (let i = 1; i < 1000000; i++) {
     robots.forEach(r => {
         r.location.x += r.velocity.x;
         r.location.y += r.velocity.y;
@@ -41,9 +41,7 @@ for (let i = 1; i < 5; i++) {
             }
         }
     });
-    if (i % 1000000 === 0) {
-        console.log('Step', i);
-    }
+
     if (checkForChristmasTree(robots)) {
         answer = i;
         break
@@ -58,18 +56,18 @@ map.display();
 logger.end(answer);
 
 function checkForChristmasTree(robots: Robot[]): boolean {
-    const grid: boolean[][] = Array.from({ length: 103 }, () => Array(101).fill(false));
+    const grid: string[][] = Array.from({ length: 103 }, () => Array(101).fill('.'));
     robots.forEach(robot => {
-        grid[robot.location.y][robot.location.x] = true;
+        grid[robot.location.y][robot.location.x] = '#';
     });
 
     for (let y = 0; y < map.height; y++) {
-        for (let x = 0; x < midX; x++) {
-            if (grid[y][x] !== grid[y][map.width - 1 - x]) {
-                return false;
-            }
+        let row = grid[y].join('')
+        if (row.indexOf('###################') > -1) {
+            return true;
         }
+
     }
-    return true;
+    return false;
 }
 
