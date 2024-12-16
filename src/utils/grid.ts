@@ -67,6 +67,9 @@ export class Grid<T> {
             return this.grid[y][x];
         return undefined
     }    
+    setNode(x: number, y: number, value: T) {
+        this.grid[y][x] = value;
+    }     
     isOutsideGrid(x: number, y: number) {
         if (x<0) return true;
         if (x>this.width-1) return true;
