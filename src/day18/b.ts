@@ -10,28 +10,27 @@ const logger = new Logger(puzzle);
 
 const bytes = input.getInput().map(l => l.split(',').map(i => parseInt(i)));
 let map: Grid<string>;
-let numberOfBtes = 0;
+let start = 0;
 if (Common.testMode()) {
     map = new Grid(7, 7, '.')
+    start = 12
 } else {
     map = new Grid(71, 71, '.')
+    start = 1024
 }
 logger.start();
 
 let answer = '';
 for (let i = 0; i < bytes.length; i++) {
     map.setNode(bytes[i][0], bytes[i][1], '#');
-    const path = findShortestPath(map);
-    if (path === -1) {
-        answer = bytes[i].join(',');
-        break;
+    if (i >= start) {
+        const path = findShortestPath(map);
+        if (path === -1) {
+            answer = bytes[i].join(',');
+            break;
+        }
     }
-
 }
-bytes.forEach((byte, index) => {
-})
-
-
 
 logger.end(answer);
 
