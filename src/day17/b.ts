@@ -8,28 +8,42 @@ const logger = new Logger(puzzle);
 
 const inputValues = input.getInput();
 
-let A = 0
-const B = parseInt(inputValues[1].split(' ')[2]);
-const C = parseInt(inputValues[2].split(' ')[2]);
-const p = inputValues[4].split(' ')[1].split(',').map(v=>parseInt(v));
+const A = BigInt(inputValues[0].split(' ')[2]);
+const B = BigInt(inputValues[1].split(' ')[2]);
+const C = BigInt(inputValues[2].split(' ')[2]);
+const program = inputValues[4].split(' ')[1].split(',').map(v => parseInt(v));
 
-let answer = 0;
-const program = p.join(',');
-while (true) {
-    const computer = new Computer(A, B, C, p);
-    computer.run();
-    // console.log(A, computer.output.join(','));
-    if (computer.output.join(',') === program) {
-        answer = A;
-        break;
-    }
-    A++;
-    if (A % 1000000 === 0) {
-        console.log(A, computer.output.length );
-    }
-}
+const computer = new Computer(A, B, C, program);
 
 logger.start();
+let answer = 0n;
 
-logger.end(answer);
+findValidCombination(program.length - 1, 0n);
+
+logger.end(parseInt(answer.toString()));
+
+
+function findValidCombination(index: number, currentAnswer: bigint): boolean {
+    if (index < 0) {
+        answer = currentAnswer;
+        return true;
+    }
+    currentAnswer = currentAnswer * 8n;
+    const p = [...program].slice(index).join(',');
+    let validValues: number[] = [];
+    for (let j = 0; j < 8; j++) {
+        computer.reset(currentAnswer + BigInt(j), B, C);
+        computer.run();
+        if (computer.output.join(',') === p) {
+            validValues.push(j);
+        }
+    }
+    for (const value of validValues) {
+        if (findValidCombination(index - 1, currentAnswer + BigInt(value))) {
+            return true;
+        }
+    }
+
+    return false;
+}
 

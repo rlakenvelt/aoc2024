@@ -1,17 +1,25 @@
 
 export class Computer {
     program: number[] = [];
-    A: number = 0;
-    B: number = 0;
-    C: number = 0;
+    A: bigint = 0n;
+    B: bigint = 0n;
+    C: bigint = 0n;
     pointer: number = 0;
     output: number[] = [];
 
-    constructor (A: number, B: number, C: number, program: number[]) {
+    constructor (A: bigint, B: bigint, C: bigint, program: number[]) {
         this.A = A;
         this.B = B;
         this.C = C;
         this.program = program;
+    }
+
+    reset (A: bigint, B: bigint, C: bigint) {
+        this.A = A;
+        this.B = B;
+        this.C = C;
+        this.pointer = 0;
+        this.output = [];
     }
 
     run () {
@@ -47,44 +55,47 @@ export class Computer {
                 default:
                     throw new Error('Invalid instruction');
             }
-            if (instruction !== 3 || this.A === 0) {
+            if (instruction !== 3 || this.A === 0n) {
                 this.pointer += 2;
             }
         }
     }
 
+    // 0
     adv (operand: number) {
-        this.A = Math.floor(this.A / (2 ** this.combo(operand)))
+        this.A = this.A / (2n ** BigInt(this.combo(operand))) 
     }
-
+    // 1
     bxl (operand: number) {
-        this.B = this.B ^ operand
+        this.B = this.B ^ BigInt(operand)
     }
-
+    // 2
     bst (operand: number) {
-        this.B = this.combo(operand) % 8 & 7
+        this.B = this.combo(operand) % 8n 
     }
-
+    // 3
     jnz (operand: number) {
-        if (this.A !== 0) {
+        if (this.A !== 0n) {
             this.pointer = operand;
         }
     }
-
+    // 4
     bxc (operand: number) {
         this.B = this.B ^ this.C;
     }
-
+    // 5
     out (operand: number) {
-        this.output.push(this.combo(operand) % 8);
+        // console.log('OUT', operand, this.B, this.combo(operand) % 8);
+        const value = this.combo(operand) % 8n;
+        this.output.push(parseInt(value.toString()));
     }
-
+    // 6
     bdv (operand: number) {
-        this.B = Math.floor(this.A / (2 ** this.combo(operand)))
+        this.B = this.A / (2n ** BigInt(this.combo(operand))) 
     }
-
+    // 7
     cdv (operand: number) {
-        this.C = Math.floor(this.A / (2 ** this.combo(operand)))
+        this.C = this.A / (2n ** BigInt(this.combo(operand))) 
     }
 
     combo (operand: number) {
@@ -96,7 +107,7 @@ export class Computer {
             case 6:
                 return this.C
             default:
-                return operand
+                return BigInt(operand)
         }
     }
 }

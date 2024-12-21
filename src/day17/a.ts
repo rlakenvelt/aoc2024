@@ -8,9 +8,9 @@ const logger = new Logger(puzzle);
 
 const inputValues = input.getInput();
 
-const A = parseInt(inputValues[0].split(' ')[2]);
-const B = parseInt(inputValues[1].split(' ')[2]);
-const C = parseInt(inputValues[2].split(' ')[2]);
+const A = BigInt(inputValues[0].split(' ')[2]);
+const B = BigInt(inputValues[1].split(' ')[2]);
+const C = BigInt(inputValues[2].split(' ')[2]);
 const p = inputValues[4].split(' ')[1].split(',').map(v=>parseInt(v));
 
 const computer = new Computer(A, B, C, p);
