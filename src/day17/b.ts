@@ -22,6 +22,11 @@ findValidCombination(program.length - 1, 0n);
 
 logger.end(parseInt(answer.toString()));
 
+// Program loops while A is not 0
+// Last instructioh (0, 3) in the only instruction that modifies A. 
+// This instruction divides A by 8 (2 ** 3). This means striping the last 3 bits of A
+// Reverse enginieering by running the program backwards, 
+// multiplying A by 8 and trying all value 1 - 8 to add the missing bits
 
 function findValidCombination(index: number, currentAnswer: bigint): boolean {
     if (index < 0) {
