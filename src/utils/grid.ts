@@ -67,6 +67,21 @@ export class Grid<T> {
             return this.grid[y][x];
         return undefined
     }    
+    getPoints(values: T[]): Point[] {
+        const points: Point[] = [];
+        const newArray = new Array(values.length);
+
+        this.grid.forEach((row, y) => {
+            row.forEach((value, x) => {
+                const pos = values.indexOf(value);
+                if (pos >= 0) {
+                    points[pos] = new Point(x, y);
+                }
+            })
+        })
+        return points;
+
+    }
     setNode(x: number, y: number, value: T) {
         this.grid[y][x] = value;
     }     

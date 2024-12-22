@@ -3,6 +3,9 @@ import Logger from '../utils/logger';
 import { Grid } from '../utils/grid';
 import { Point } from '../utils/point';
 import { Direction } from '../utils/direction';
+import { PriorityQueue } from '../utils/graph';
+
+type QueueItem = { point: Point, direction: string, cost: number };
 
 const puzzle = 'Day 16A: Reindeer Maze'
 const input = new InputHelper();
@@ -11,54 +14,41 @@ const logger = new Logger(puzzle);
 const inputValues = input.getInput().map(l => l.split(''));
 const map: Grid<string> = new Grid(inputValues[0].length, inputValues.length)
 map.setGrid(inputValues)
-const {start, end} = findStartAndEnd(map.grid);
 
-map.display()
+const [ start, end ] = map.getPoints(['S', 'E']);
 
 logger.start();
-let answer = 0;
-findCheapestPath(map);
-
-
-
+let answer = findCheapestPath(map, start, end);
 logger.end(answer);
 
-function findCheapestPath(map: Grid<string>): number {
-    const queue: { x: number, y: number, direction: string, steps: number }[] = [{ ...start, direction: 'E', steps: 0 }];
+function findCheapestPath(map: Grid<string>, start: Point, end: Point): number {
+    const queue = new PriorityQueue<QueueItem>((a, b) => a.cost - b.cost);
     const visited = new Set<string>();
-    visited.add(`${start.x},${start.y},E`);
+    queue.enqueue({ point: start, direction: 'E', cost: 0 });
+    visited.add(key(start,'E'));
 
-    while (queue.length > 0) {
-        const { x, y, direction, steps } = queue.shift()!;
-        if (x === map.width - 1 && y === map.height - 1) {
-            return steps;
+    while (!queue.isEmpty()) {
+        const { point: p, direction, cost } = queue.dequeue()!;
+        if (p.x === end.x && p.y === end.y) {
+            return cost;
         }
 
         Direction.directionsWithoutDiagonals().forEach(dir => {
-            const newX = x + dir.x;
-            const newY = y + dir.y;   
-            if (map.isInsideGrid(newX, newY) && map.node(newX, newY) !== '#' && !visited.has(`${newX},${newY}`)) {
-                queue.push({ x: newX, y: newY, direction: dir.symbol, steps: steps + 1 });
-                visited.add(`${newX},${newY},${dir.symbol}`);
+            const newPoint = new Point(p.x+dir.x, p.y+dir.y);
+            const newDirection = dir.symbol;
+            const rotationCost = direction === newDirection ? 0 : 1000;
+            const newCost = cost + 1 + rotationCost;
+
+            if (map.isInsideGrid(newPoint.x, newPoint.y) && map.node(newPoint.x, newPoint.y) !== '#' && !visited.has(key(newPoint,newDirection))) {
+                queue.enqueue({ point: newPoint, direction: newDirection, cost: newCost });
+                visited.add(key(newPoint,newDirection));
             }
-        })
+        });
     }
 
     return -1; 
 }
 
-function findStartAndEnd(map: string[][]){
-    let start = new Point(0, 0);
-    let end = new Point(0, 0);
-    for (let y = 0; y < map.length; y++) {
-        for (let x = 0; x < map[y].length; x++) {
-            if (map[y][x] === 'S') {
-                start = new Point(x, y);
-            }
-            if (map[y][x] === 'E') {
-                end = new Point(x, y);
-            }
-        }
-    }    
-    return {start, end};
+function key(point: Point, direction: string) {
+    return `${point.x},${point.y},${direction}`;
 }

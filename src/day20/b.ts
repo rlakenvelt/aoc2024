@@ -25,7 +25,7 @@ if (Common.testMode()) {
 map.setGrid(inputValues)
 logger.start();
 
-let {start, end} = findStartAndEnd(map)
+const [ start, end ] = map.getPoints(['S', 'E']);
 let basePath = findPath(map, start, end)
 const cheats = findCheats(map, basePath, 100, 20);
 
@@ -97,20 +97,4 @@ function point (key:number) {
     const y = key % 1000
     const x = (key - y) / 1000
     return new Point(x, y)
-}
-
-function findStartAndEnd(map: Grid<string>){
-    let start = new Point(0, 0);
-    let end = new Point(0, 0);
-    for (let y = 0; y < map.grid.length; y++) {
-        for (let x = 0; x < map.grid[y].length; x++) {
-            if (map.grid[y][x] === 'S') {
-                start = new Point(x, y);
-            }
-            if (map.grid[y][x] === 'E') {
-                end = new Point(x, y);
-            }
-        }
-    }    
-    return {start, end};
 }
