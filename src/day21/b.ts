@@ -2,7 +2,7 @@ import InputHelper from '../utils/input';
 import Logger from '../utils/logger';
 import { Keypad } from './keypad';
 
-const puzzle = 'Day 21A: Keypad Conundrum'
+const puzzle = 'Day 21B: Keypad Conundrum'
 const input = new InputHelper();
 const logger = new Logger(puzzle);
 
@@ -11,7 +11,7 @@ const keypads: Keypad[] = [];
 
 logger.start();
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 26; i++) {
     if (i === 0) {
         keypads.push(new Keypad('numeric'));
     } else {

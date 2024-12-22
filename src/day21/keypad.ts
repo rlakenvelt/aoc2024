@@ -66,16 +66,25 @@ export class Keypad {
         if (start === end) return ['A'];
         const paths = this.keypad.dfs(start, end).sort((a, b) => a.costs - b.costs);
         const minCosts = paths[0].costs;
-        const shortestPaths = paths.filter(path => path.costs === minCosts)
+        let minTurns = Infinity;
+        let shortestPaths = paths.filter(path => path.costs === minCosts)
                                    .map(path => {
                                         const p: string[] = []
                                         for (let i = 0; i < path.path.length - 1; i++) {
                                             const symbol = this.symbols.get(`${path.path[i]}${path.path[i+1]}`) || ''
                                             p.push(symbol)
                                         }
-                                        return p.join('') + 'A';
+                                        let turns = 0;
+                                        for (let i = 0; i < p.length - 1; i++) {
+                                            if (p[i] !== p[i+1]) {
+                                                turns++;
+                                            }
+                                        }
+                                        minTurns = Math.min(minTurns, turns);
+                                        return {path: p.join('') + 'A', turns: turns};
                                    });
-        return shortestPaths;
+        let filteredPaths = shortestPaths.filter(path => path.turns === minTurns).map(path => path.path);
+        return filteredPaths;
     }
 
 }
