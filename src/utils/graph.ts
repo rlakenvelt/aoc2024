@@ -217,6 +217,10 @@ export class PriorityQueue<T> {
         console.log(this.heap)
     }
 
+    size() {
+        return this.heap.length
+    }
+
     enqueue(item: T): void {
         this.heap.push(item);
         this.bubbleUp();

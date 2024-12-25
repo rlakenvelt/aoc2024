@@ -62,6 +62,13 @@ export class Direction {
         if (this.symbol === 'W') this.symbol = 'E';
     }
 
+    static opposite(direction: string): string {
+        if (direction === 'N') return 'S';
+        if (direction === 'E') return 'W';
+        if (direction === 'S') return 'N';
+        if (direction === 'W') return 'E';
+        return '';
+    }
     static directionsWithDiagonals(): Direction[] {
         return [
             new Direction(1, 0),
