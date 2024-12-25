@@ -15,9 +15,10 @@ const inputValues = input.getInput().map(l => l.split(''));
 const map: Grid<string> = new Grid(inputValues[0].length, inputValues.length)
 map.setGrid(inputValues)
 
+logger.start();
+
 const [ start, end ] = map.getPoints(['S', 'E']);
 
-logger.start();
 let answer = findCheapestPath(map, start, end);
 logger.end(answer);
 
@@ -26,9 +27,14 @@ function findCheapestPath(map: Grid<string>, start: Point, end: Point): number {
     const visited = new Set<string>();
     queue.enqueue({ point: start, direction: 'E', cost: 0 });
     visited.add(key(start,'E'));
+    let maxpath = 0;
 
     while (!queue.isEmpty()) {
         const { point: p, direction, cost } = queue.dequeue()!;
+        if (queue.size() > maxpath) {
+            maxpath = queue.size();
+            console.log('Path length:', maxpath);
+        }
         if (p.x === end.x && p.y === end.y) {
             return cost;
         }
