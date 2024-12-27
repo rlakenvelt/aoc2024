@@ -5,41 +5,42 @@ import { Keypad } from './keypad';
 const puzzle = 'Day 21A: Keypad Conundrum'
 const input = new InputHelper();
 const logger = new Logger(puzzle);
-
 const codes = input.getInput();
-const keypads: Keypad[] = [];
 
+type Cache = Map<string, number>;
 logger.start();
 
-for (let i = 0; i < 3; i++) {
-    if (i === 0) {
-        keypads.push(new Keypad('numeric'));
-    } else {
-        keypads.push(new Keypad());
-    }
-}
 
-let answer = 0;
+const numericKeypad     = new Keypad('numeric');
+const directionalKeypad = new Keypad();
 
-for (let i = 0; i < codes.length; i++) {
-    let directionalCodes = new Set<string>;
-    directionalCodes.add(codes[i])
-    keypads.forEach((keypad) => {
-        const newDirectionalCodes = new Set<string>;
-        directionalCodes.forEach((directionalCode) => {
-            const sequences = keypad.pressCode(directionalCode);
-            for (let j = 0; j < directionalCodes.size; j++) {
-                for (let k = 0; k < sequences.length; k++) {
-                    newDirectionalCodes.add(sequences[k]);
-                }
-            }
-        });
-        directionalCodes = newDirectionalCodes;
-    });
-    let codesArray = Array.from(directionalCodes)
-    codesArray.sort((a, b) => a.length - b.length);
-    answer += codesArray[0].length * parseInt(codes[i].substring(0, 3));
-}
+
+const cache: Cache = new Map(); 
+
+let answer = codes.reduce((sum, code) => {
+    return sum + parseInt(code.substring(0, 3)) * getKeyPresses(numericKeypad, code, 2);
+}, 0);
 
 logger.end(answer);
+
+function getKeyPresses (keypad: Keypad, code: string, robot: number): number {
+    const key = `${code},${robot}`;
+    if (cache.get(key) !== undefined) return cache.get(key) || 0;
+
+    code = 'A' + code;
+    let length = 0;
+    for (let i = 0; i < code.length - 1; i++) {
+        const moves = keypad.buttonSequences(code[i], code[i + 1]);
+        if (robot === 0) {
+            length += moves[0].length;
+        } else {
+            length += moves.reduce((l, move) => {
+                return Math.min(l, getKeyPresses(directionalKeypad, move, robot - 1));
+            }, Infinity);
+        }
+    }
+    cache.set(key, length);
+    return length;
+}
+
 

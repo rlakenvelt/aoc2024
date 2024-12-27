@@ -5,10 +5,13 @@ export class Keypad {
     type: string;
     private keypad: Graph<string>;
     private symbols: Map<string, string>
+    private paths: Map<string, string>
+    private buttons: string[] = [];
 
     constructor (type: string = 'directional') {
         this.type = type;
         this.symbols = new Map()
+        this.paths = new Map()
         this.keypad = new Graph<string>(true);
         if (type === 'numeric') {
             this.connectButtons('7', '8', '>');
@@ -33,37 +36,32 @@ export class Keypad {
             this.connectButtons('<', 'v', '>');
             this.connectButtons('v', '>', '>');
         }
+        this.calculateAllPaths();
     }
+
     private connectButtons (start: string, end: string, symbol: string) {
         const reverseSymbol = symbol === '>' ? '<' : '^';
         this.keypad.addEdge(start, end);    
         this.symbols.set(`${start}${end}`, symbol);
         this.keypad.addEdge(end, start);    
         this.symbols.set(`${end}${start}`, reverseSymbol);
+        this.buttons.push(start);
+        this.buttons.push(end);
     }
-
-    pressCode (code: string): string[] {
-        return this.directionalCodes('A' + code);
-    }
-    directionalCodes (code: string): string[] {
-        let buttonSequences = this.buttonSequences(code[0], code[1]);
-        if (code.length > 2) {
-            for (let i = 1; i < code.length - 1; i++) {
-                const sequences = this.buttonSequences(code[i], code[i+1]);
-                const newSequences: string[] = [];
-                for (let j = 0; j < buttonSequences.length; j++) {
-                    for (let k = 0; k < sequences.length; k++) {
-                        newSequences.push(buttonSequences[j] + sequences[k]);
-                    }
+    private calculateAllPaths () {
+        for (let i = 0; i < this.buttons.length; i++) {
+            for (let j = 0; j < this.buttons.length; j++) {
+                if (i !== j) {
+                    const paths = this.buttonSequences(this.buttons[i], this.buttons[j]);
+                    this.paths.set(`${this.buttons[i]}${this.buttons[j]}`, paths[0]);
                 }
-                buttonSequences = newSequences;
             }
         }
-        return buttonSequences;
     }
 
     buttonSequences (start: string, end: string) {
         if (start === end) return ['A'];
+
         const paths = this.keypad.dfs(start, end).sort((a, b) => a.costs - b.costs);
         const minCosts = paths[0].costs;
         let minTurns = Infinity;
