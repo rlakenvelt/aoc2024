@@ -5,9 +5,9 @@ const puzzle = 'Day 15A: Warehouse Woes'
 const input = new InputHelper();
 const logger = new Logger(puzzle);
 
-let inputValues = input.getInput('\n\n');
-const map = inputValues[0].split('\n').map(l => l.split(''));
-const moves = inputValues[1].split('\n').join('').split('');
+let inputValues = input.getInput(input.dblEol);
+const map = inputValues[0].split(input.eol).map(l => l.split(''));
+const moves = inputValues[1].split(input.eol).join('').split('');
 
 logger.start();
 

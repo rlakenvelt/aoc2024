@@ -5,9 +5,9 @@ const puzzle = 'Day 05A: Print Queue'
 const input = new InputHelper();
 const logger = new Logger(puzzle);
 
-const inputValues = input.getInput('\n\n');
-const rules = inputValues[0].split('\n');
-const pages = inputValues[1].split('\n');
+const inputValues = input.getInput(input.dblEol);
+const rules = inputValues[0].split(input.eol);
+const pages = inputValues[1].split(input.eol);
 
 logger.start();
 let answer = 0;

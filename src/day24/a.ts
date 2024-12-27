@@ -5,20 +5,20 @@ const puzzle = 'Day 24A: Crossed Wires'
 const input = new InputHelper();
 const logger = new Logger(puzzle);
 
-const inputValues = input.getInput('\n\n');
+const inputValues = input.getInput(input.dblEol);
 
 type WireMap = Map<string, number>;
 type Gate = { wireIn1: string, type: string, wireIn2: string, wireOut: string, waiting: boolean };
 
 logger.start();
 
-const wires: WireMap = inputValues[0].split('\n').reduce((acc: WireMap, wire) => {
+const wires: WireMap = inputValues[0].split(input.eol).reduce((acc: WireMap, wire) => {
     const [key, value] = wire.split(': ');
     acc.set(key, parseInt(value));
     return acc;
 }, new Map());
 
-const gates: Gate[] = inputValues[1].split('\n').map((gate) => {
+const gates: Gate[] = inputValues[1].split(input.eol).map((gate) => {
     const [wireIn1, type, wireIn2, , wireOut] = gate.split(' ');
     return { wireIn1, type, wireIn2, wireOut, waiting: true };
 });

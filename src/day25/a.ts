@@ -5,7 +5,7 @@ const puzzle = 'Day 25A'
 const input = new InputHelper();
 const logger = new Logger(puzzle);
 
-const inputValues = input.getInput('\n\n').map(i => i.split('\n'));
+const inputValues = input.getInput(input.dblEol).map(i => i.split(input.eol));
 let locks: number[][] = [];
 let keys: number[][] = [];
 

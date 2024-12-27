@@ -5,8 +5,8 @@ const puzzle = 'Day 13A: Claw Contraption'
 const input = new InputHelper();
 const logger = new Logger(puzzle);
 
-const machines = input.getInput('\n\n').map((machine) => {
-    const [part1, part2, part3] = machine.split('\n');
+const machines = input.getInput(input.dblEol).map((machine) => {
+    const [part1, part2, part3] = machine.split(input.eol);
     const buttonA = { x: trimNonNumericCharacters(part1.split(' ')[2]), y: trimNonNumericCharacters(part1.split(' ')[3])};
     const buttonB = { x: trimNonNumericCharacters(part2.split(' ')[2]), y: trimNonNumericCharacters(part2.split(' ')[3])};
     const prize = { x: trimNonNumericCharacters(part3.split(' ')[1]) + 10000000000000, y: trimNonNumericCharacters(part3.split(' ')[2]) + 10000000000000};

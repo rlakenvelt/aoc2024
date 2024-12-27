@@ -6,10 +6,10 @@ const puzzle = 'Day 15B: Warehouse Woes'
 const input = new InputHelper();
 const logger = new Logger(puzzle);
 
-let inputValues = input.getInput('\n\n');
+let inputValues = input.getInput(input.dblEol);
 type Map = string[][];
 type Box = Point[];
-const map: Map = inputValues[0].split('\n')
+const map: Map = inputValues[0].split(input.eol)
                           .map(l => {
                                 let t = l.replace(/#/g, '##')
                                 t = t.replace(/O/g, '[]')
@@ -19,7 +19,7 @@ const map: Map = inputValues[0].split('\n')
                           })
                           .map(l => l.split(''));
 
-const moves = inputValues[1].split('\n').join('').split('');
+const moves = inputValues[1].split(input.eol).join('').split('');
 
 logger.start();
 

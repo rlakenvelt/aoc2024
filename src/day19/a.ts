@@ -5,9 +5,9 @@ const puzzle = 'Day 19A: Linen Layout'
 const input = new InputHelper();
 const logger = new Logger(puzzle);
 
-const inputValues = input.getInput('\n\n');
+const inputValues = input.getInput(input.dblEol);
 const towels = inputValues[0].split(',').map(towel => towel.trim()); 
-const patterns = inputValues[1].split('\n');
+const patterns = inputValues[1].split(input.eol).map(pattern => pattern.trim());
 
 logger.start();
 let answer = 0;
