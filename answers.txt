@@ -1,0 +1,492 @@
+---------------------
+Puzzle   : Day 1A: Historian Hysteria
+Answer   : 765748
+Duration : 752 µs
+---------------------
+---------------------
+Puzzle   : Day 1B: Historian Hysteria
+Answer   : 27732508
+Duration : 6 ms
+---------------------
+---------------------
+Puzzle   : Day 02A: Red-Nosed Reports
+Answer   : 359
+Duration : 208 µs
+---------------------
+---------------------
+Puzzle   : Day 02B: Red-Nosed Reports
+Answer   : 418
+Duration : 813 µs
+---------------------
+---------------------
+Puzzle   : Day 03A: Mull It Over
+Answer   : 185797128
+Duration : 191 µs
+---------------------
+---------------------
+Puzzle   : Day 03B: Mull It Over
+Answer   : 89798695
+Duration : 182 µs
+---------------------
+---------------------
+Puzzle   : Day 04A: Ceres Search
+Answer   : 2390
+Duration : 11 ms
+---------------------
+---------------------
+Puzzle   : Day 04B: Ceres Search
+Answer   : 1809
+Duration : 777 µs
+---------------------
+---------------------
+Puzzle   : Day 05A: Print Queue
+Answer   : 5948
+Duration : 54 ms
+---------------------
+---------------------
+Puzzle   : Day 05B: Print Queue
+Answer   : 3062
+Duration : 53 ms
+---------------------
+---------------------
+Puzzle   : Day 06A: Guard Gallivant
+Answer   : 4967
+Duration : 23 ms
+---------------------
+---------------------
+Puzzle   : Day 06B: Guard Gallivant
+Answer   : 1789
+Duration : 1706 ms
+---------------------
+---------------------
+Puzzle   : Day 07A: Bridge Repair
+Answer   : 975671981569
+Duration : 2013 ms
+---------------------
+---------------------
+Puzzle   : Day 07B: Bridge Repair
+Answer   : 223472064194845
+Duration : 86901 ms
+---------------------
+---------------------
+Puzzle   : Day 08B: Resonant Collinearity
+Answer   : 426
+Duration : 796 µs
+---------------------
+---------------------
+Puzzle   : Day 08B: Resonant Collinearity
+Answer   : 1359
+Duration : 1444 µs
+---------------------
+---------------------
+Puzzle   : Day 09A: Disk Fragmenter
+Answer   : 6299243228569
+Duration : 436 ms
+---------------------
+---------------------
+Puzzle   : Day 09B: Disk Fragmenter
+Answer   : 6326952672104
+Duration : 123 ms
+---------------------
+---------------------
+Puzzle   : Day 10A: Hoof It
+Answer   : 514
+Duration : 4 ms
+---------------------
+---------------------
+Puzzle   : Day 10B: Hoof It
+Answer   : 1162
+Duration : 4 ms
+---------------------
+[ 2, 54, 992917, 5270417, 2514, 28561, 0, 990 ]
+---------------------
+Puzzle   : Day 11A: Plutonian Pebbles
+Answer   : 222461
+Duration : 21 ms
+---------------------
+---------------------
+Puzzle   : Day 11B: Plutonian Pebbles
+Answer   : 264350935776416
+Duration : 16 ms
+---------------------
+---------------------
+Puzzle   : Day 12A: Garden Groups
+Answer   : 1461752
+Duration : 17 ms
+---------------------
+---------------------
+Puzzle   : Day 12B: Garden Groups
+Answer   : 904114
+Duration : 20 ms
+---------------------
+---------------------
+Puzzle   : Day 13A: Claw Contraption
+Answer   : 29436
+Duration : 109 µs
+---------------------
+---------------------
+Puzzle   : Day 13A: Claw Contraption
+Answer   : 103729094227877
+Duration : 116 µs
+---------------------
+---------------------
+Puzzle   : Day 14A: Restroom Redoubt
+Answer   : 224357412
+Duration : 1315 µs
+---------------------
+---------------------
+Puzzle   : Day 14B: Restroom Redoubt
+Answer   : 7083
+Duration : 794 ms
+---------------------
+---------------------
+Puzzle   : Day 15A: Warehouse Woes
+Answer   : 1487337
+Duration : 1163 µs
+---------------------
+---------------------
+Puzzle   : Day 15B: Warehouse Woes
+Answer   : 1521952
+Duration : 5 ms
+---------------------
+Path length: 1
+Path length: 2
+Path length: 3
+Path length: 4
+Path length: 6
+Path length: 7
+Path length: 8
+Path length: 9
+Path length: 10
+Path length: 11
+Path length: 12
+Path length: 13
+Path length: 14
+Path length: 15
+Path length: 18
+Path length: 19
+Path length: 20
+Path length: 21
+Path length: 22
+Path length: 23
+Path length: 24
+Path length: 25
+Path length: 26
+Path length: 27
+Path length: 28
+Path length: 29
+Path length: 30
+Path length: 31
+Path length: 32
+Path length: 33
+Path length: 34
+Path length: 35
+Path length: 36
+Path length: 37
+Path length: 38
+Path length: 39
+Path length: 42
+Path length: 43
+Path length: 44
+Path length: 45
+Path length: 46
+Path length: 47
+Path length: 48
+Path length: 49
+Path length: 50
+Path length: 51
+Path length: 52
+Path length: 55
+Path length: 56
+Path length: 57
+Path length: 58
+Path length: 60
+Path length: 61
+Path length: 62
+Path length: 63
+Path length: 64
+Path length: 65
+Path length: 66
+Path length: 67
+Path length: 68
+Path length: 70
+Path length: 71
+Path length: 72
+Path length: 73
+Path length: 74
+Path length: 75
+Path length: 76
+Path length: 79
+Path length: 80
+Path length: 82
+Path length: 83
+Path length: 86
+Path length: 87
+Path length: 89
+Path length: 90
+Path length: 92
+Path length: 93
+Path length: 94
+Path length: 95
+Path length: 97
+Path length: 99
+Path length: 100
+Path length: 101
+Path length: 103
+Path length: 104
+Path length: 105
+Path length: 106
+Path length: 108
+Path length: 109
+Path length: 110
+Path length: 111
+Path length: 114
+Path length: 115
+Path length: 116
+Path length: 119
+Path length: 120
+Path length: 122
+Path length: 123
+Path length: 124
+Path length: 126
+Path length: 127
+Path length: 128
+Path length: 129
+Path length: 131
+Path length: 134
+Path length: 135
+Path length: 136
+Path length: 138
+Path length: 139
+Path length: 141
+Path length: 142
+Path length: 143
+Path length: 144
+Path length: 145
+Path length: 146
+Path length: 147
+Path length: 148
+Path length: 149
+Path length: 150
+Path length: 152
+Path length: 153
+Path length: 154
+Path length: 155
+Path length: 156
+Path length: 157
+Path length: 158
+Path length: 159
+Path length: 160
+Path length: 161
+Path length: 162
+Path length: 164
+Path length: 165
+Path length: 166
+Path length: 167
+Path length: 168
+Path length: 169
+Path length: 170
+Path length: 171
+Path length: 173
+Path length: 174
+Path length: 175
+Path length: 176
+Path length: 177
+Path length: 178
+Path length: 181
+Path length: 182
+Path length: 183
+Path length: 184
+Path length: 185
+Path length: 186
+Path length: 188
+Path length: 189
+Path length: 190
+Path length: 191
+Path length: 192
+Path length: 193
+Path length: 195
+Path length: 196
+Path length: 197
+Path length: 198
+Path length: 199
+Path length: 200
+Path length: 201
+Path length: 202
+Path length: 203
+Path length: 204
+Path length: 205
+Path length: 206
+Path length: 207
+Path length: 208
+Path length: 209
+Path length: 210
+Path length: 211
+Path length: 212
+Path length: 213
+Path length: 214
+Path length: 215
+Path length: 216
+Path length: 217
+Path length: 218
+Path length: 220
+Path length: 221
+Path length: 222
+Path length: 223
+Path length: 224
+Path length: 225
+Path length: 226
+Path length: 227
+Path length: 228
+Path length: 229
+Path length: 230
+Path length: 231
+Path length: 232
+Path length: 233
+Path length: 234
+Path length: 236
+Path length: 238
+Path length: 239
+Path length: 240
+Path length: 241
+Path length: 242
+Path length: 243
+Path length: 244
+Path length: 245
+Path length: 246
+Path length: 248
+Path length: 249
+Path length: 250
+Path length: 251
+Path length: 252
+Path length: 253
+Path length: 254
+Path length: 255
+Path length: 256
+Path length: 258
+Path length: 259
+Path length: 260
+Path length: 261
+Path length: 262
+Path length: 263
+Path length: 264
+Path length: 266
+Path length: 267
+Path length: 268
+Path length: 269
+Path length: 272
+Path length: 273
+Path length: 275
+Path length: 276
+Path length: 278
+Path length: 279
+Path length: 280
+Path length: 281
+Path length: 282
+Path length: 283
+Path length: 285
+Path length: 286
+Path length: 287
+Path length: 288
+Path length: 289
+Path length: 290
+Path length: 291
+Path length: 292
+Path length: 293
+Path length: 294
+Path length: 295
+---------------------
+Puzzle   : Day 16A: Reindeer Maze
+Answer   : 98520
+Duration : 14 ms
+---------------------
+---------------------
+Puzzle   : Day 16A: Reindeer Maze
+Answer   : 609
+Duration : 374 ms
+---------------------
+---------------------
+Puzzle   : Day 17A: Chronospatial Computer
+Answer   : 1,5,0,1,7,4,1,0,3
+Duration : 142 µs
+---------------------
+---------------------
+Puzzle   : Day 17B: Chronospatial Computer
+Answer   : 47910079998866
+Duration : 1443 µs
+---------------------
+---------------------
+Puzzle   : Day 18A: RAM Run
+Answer   : 306
+Duration : 2 ms
+---------------------
+---------------------
+Puzzle   : Day 18B: RAM Run
+Answer   : 38,63
+Duration : 1042 ms
+---------------------
+---------------------
+Puzzle   : Day 19A: Linen Layout
+Answer   : 315
+Duration : 116 ms
+---------------------
+---------------------
+Puzzle   : Day 19B: Linen Layout
+Answer   : 625108891232249
+Duration : 114 ms
+---------------------
+---------------------
+Puzzle   : Day 20A: Race Condition
+Answer   : 1452
+Duration : 17564 ms
+---------------------
+---------------------
+Puzzle   : Day 20B: Race Condition
+Answer   : 999556
+Duration : 11433 ms
+---------------------
+---------------------
+Puzzle   : Day 21A: Keypad Conundrum
+Answer   : 109758
+Duration : 14 ms
+---------------------
+---------------------
+Puzzle   : Day 21B: Keypad Conundrum
+Answer   : 134341709499296
+Duration : 16 ms
+---------------------
+---------------------
+Puzzle   : Day 22A: Monkey Market
+Answer   : 20215960478
+Duration : 158 ms
+---------------------
+---------------------
+Puzzle   : Day 22B: Monkey Market
+Answer   : 2221
+Duration : 3676694 ms
+---------------------
+---------------------
+Puzzle   : Day 23A: LAN Party
+Answer   : 1485
+Duration : 374 ms
+---------------------
+---------------------
+Puzzle   : Day 23B: LAN Party
+Answer   : cc,dz,ea,hj,if,it,kf,qo,sk,ug,ut,uv,wh
+Duration : 80 ms
+---------------------
+---------------------
+Puzzle   : Day 24A: Crossed Wires
+Answer   : 59336987801432
+Duration : 840 µs
+---------------------
+---------------------
+Puzzle   : Day 24B: Crossed Wires
+Answer   : ctg,dmh,drq,rpb,rpv,z11,z31,z38
+Duration : 945 µs
+---------------------
+---------------------
+Puzzle   : Day 25A
+Answer   : 3317
+Duration : 1327 µs
+---------------------
